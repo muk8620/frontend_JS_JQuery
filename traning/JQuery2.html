@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 예제1 -->
+  <script>
+    $(document).ready(function () {
+      $('div:eq(0)').css('background-color', 'red');
+      $('div:eq(1)').css('background-color', 'orange');
+      $('div:eq(2)').css('background-color', 'yellow');
+      $('div:eq(3)').css('background-color', 'green');
+      $('div:eq(4)').css('background-color', 'blue');
+      $('div:eq(5)').css('background-color', 'navy');
+      $('div:eq(6)').css('background-color', 'purple');
+      
+      $('div:first').css('border-radius', 10);
+      $('div:last').css('border-radius', 10);
+
+      $('div:nth-child(2n-1)').css('color', 'white');
+      $('div:nth-child(2n)').css('color', 'gray');
+
+      $('div:odd').css('color', 'white');
+      $('div:even').css('color', 'gray');
+
+      $('div:gt(3)').css('text-decoration', 'underline');
+      $('div:lt(3)').css('fontStyle', 'italic');
+    });
+  </script>
+
+  <div>레드</div>
+  <div>오렌지</div>
+  <div>옐로우</div>
+  <div>그린</div>
+  <div>블루</div>
+  <div>네이비</div>
+  <div>퍼플</div>
+  
+  <!-- 예제2 -->
+  <script>
+    $(document).ready(function () {
+      $('input[type=text]').css('border', '1px solid red');
+      $('input:text').css('border', '1px solid red');
+
+      $('input[type=password]').css('border', '1px solid blue')
+      $('input:password').css('border', '1px solid blue');
+      $('input:disabled').css('background-color', 'blue');
+    });
+    
+  </script>
+  <div>
+    <h1>로그인</h1>
+    <input type="text" disabled>
+    <input type="password">
+    <button>로그인</button>
+  </div>
+
+  <!-- 예제3 -->
+  <script>
+    $(document).ready(function () {
+      $('input:checked').css('width', '200px');
+
+      $('input').on('click', function(){
+        $('input').css('width', '20px');
+        $('input:checked').css('width', '200px');
+      })
+      
+    });
+  </script>
+  <div>
+    <h1>로그인</h1>
+    <input type="checkbox" checked>
+    <input type="checkbox">
+    <input type="checkbox" checked>
+    <input type="checkbox">
+    <input type="checkbox">
+    <button>로그인</button>
+  </div>
+
+  
+  <!-- 예제4 -->
+  <script>
+    $('h1').html( (index, text) => {
+      return text + (index + 1);
+    })
+  </script>
+  <h1>제목 태그</h1>
+  <h1>제목 태그</h1>
+  <h1>제목 태그</h1>
+
+
+  <!-- !!!예제5 -->
+  <script>
+    $(document).ready(function () {
+
+      var colors = ['red', 'green', 'blue'];
+
+      $('h1').css({
+        backgroundColor: 'gray',
+        color: function(index){
+          return colors[index];
+        }
+      });
+    });
+  </script>
+  <h1>제목 태그</h1>
+  <h1>제목 태그</h1>
+  <h1>제목 태그</h1>
+  
+
+  <!-- 예제6 -->
+  <script>
+    $(document).ready(function () {
+      $('h1:first').css('color', 'red');
+      $('h1').first().css('color', 'red');
+    })
+  </script>
+  <h1>제목 태그</h1>
+  <h1>제목 태그</h1>
+  <h1>제목 태그</h1>
+  <h1>제목 태그</h1>
+  <h1>제목 태그</h1>
+
+  <!-- 예제7 -->
+  <script>
+    $(document).ready(function () {
+      $('h1')
+        .filter(function (index) { 
+          return index;
+        })
+        .css('textDecoration', 'underline');
+    })
+  </script>
+  <h1>제목 태그</h1>
+  <h1 class="second">제목 태그</h1>
+  <h1 class="third">제목 태그</h1>
+  <h1>제목 태그</h1>
+  <h1>제목 태그</h1>
+
+  <!-- 예제8 -->
+  <script>
+    $(document).ready(function () {
+      $('h1')
+        .filter(function (index) { 
+          return !(index % 2);
+        })
+        .css('textDecoration', 'underline');
+    })
+  </script>
+
+  <!-- 예제9 -->
+  <script>
+    $(document).ready(function () {
+      $('li')
+      .filter(function (index) { 
+        return $(this).text().length >= 5;
+      })
+      .css('color', 'red');
+    })
+    </script>
+  <ul>
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Kiwi</li>
+    <li>Strawberry</li>
+    <li>Peach</li>
+  </ul>
+  
+  <!-- 예제10 -->
+  <style>
+    .empty-field {
+      border: 2px solid red;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      $('#signUp').click(function(event){
+        $('input')
+        .filter(function (index){
+          return $(this).val() === '';
+        })
+        .attr('class', 'empty-field');
+      });
+
+      $('#signUp').click(function(event){
+        $('input')
+        .filter(function (index){
+          return $(this).val() !== '';
+        })
+        .removeAttr('class');
+      });
+
+      $('#signUp').click(function(event){
+        $('input')
+        .filter(function (index){
+          return ($(this).val() === '') ? $(this).attr('class', 'empty-field') : $(this).removeAttr('class');
+        });
+      });
+    })
+  </script>
+  <form id="sampleForm">
+    <label>Username:</label>
+    <input type="text" name="username"><br><br>
+
+    <label>Email:</label>
+    <input type="email" name="email"><br><br>
+
+    <label>Password:</label>
+    <input type="text" name="color"><br><br>
+
+    <label>Favorite Color:</label>
+    <input type="text" name="color"><br><br>
+
+    <button type="button" id="signUp">signUp</button>
+  </form>
+
+</body>
+</html>

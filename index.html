@@ -1,28 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script
-  src="https://code.jquery.com/jquery-3.7.0.min.js"
-  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
   <title>Document</title>
+  <style>
+    .empty-field {
+      border: 2px solid red;
+    }
+  </style>
   <script>
-    $(document).ready(function(){
-      var inputStyle = {
-        border: '1px solid red',
-        padding: '20px',
-        color: 'red'
-      }
-      $('input[type=text]').css(inputStyle);
-      $('input[type=password]').css('border', '1px solid blue');
-    });
+    $(document).ready(function () {
+      $('#signUp').click(function(event){
+        $('input')
+        .filter(function (index){
+          return $(this).val() === '';
+        })
+        .attr('class', 'empty-field');
+      });
+
+      $('#signUp').click(function(event){
+        $('input')
+        .filter(function (index){
+          return $(this).val() !== '';
+        })
+        .removeAttr('class');
+      });
+
+      $('#signUp').click(function(event){
+        $('input')
+        .filter(function (index){
+          return ($(this).val() === '') ? $(this).attr('class', 'empty-field') : $(this).removeAttr('class');
+        });
+      });
+    })
   </script>
 </head>
+
 <body>
-  <input type="text">
-  <input type="password">
+  <form id="sampleForm">
+    <label>Username:</label>
+    <input type="text" name="username"><br><br>
+
+    <label>Email:</label>
+    <input type="email" name="email"><br><br>
+
+    <label>Password:</label>
+    <input type="text" name="color"><br><br>
+
+    <label>Favorite Color:</label>
+    <input type="text" name="color"><br><br>
+
+    <button type="button" id="signUp">signUp</button>
+  </form>
+
 </body>
+
 </html>

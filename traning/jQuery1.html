@@ -26,6 +26,19 @@
   </script>
   <h1>제목태그</h1>
   <!-- 예제2 -->
+  <script>
+    $(document).ready(function(){
+      var inputStyle = {
+        border: '1px solid red',
+        padding: '20px',
+        color: 'red'
+      }
+      $('input[type=text]').css(inputStyle);
+      $('input[type=password]').css('border', '1px solid blue');
+    });
+  </script>
+  <input type="text">
+  <input type="password">
   <!-- 예제3 -->
   <!-- 예제4 -->
   <!-- 예제5 -->
