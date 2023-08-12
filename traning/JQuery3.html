@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <!-- 예제1 -->
+   <script>
+      $(document).ready(function () {
+         // $('h1').not('.second').css('color', 'red');
+
+         $('h1').not(function (index) {
+            console.log(index);
+            return index % 3 === 0;
+         })
+            .css('textDecoration', 'underline');
+      });
+   </script>
+   <h1>제목태그</h1>
+   <h1 class="second">제목태그</h1>
+   <h1>제목태그</h1>
+   <h1>제목태그</h1>
+   <h1>제목태그</h1>
+   <h1>제목태그</h1>
+   <h1>제목태그</h1>
+   <h1>제목태그</h1>
+   <h1>제목태그</h1>
+   <h1>제목태그</h1>
+
+   <!-- 예제2 -->
+   <script>
+      $(document).ready(function () {
+         $('div').click(function () {
+            // $(this).attr('style') ? $(this).removeAttr('style') : $(this).css('background-color', 'pink');
+            clear();
+            selected($(this));
+         });
+
+         function clear() {
+            $('div').removeAttr('style');
+            $('div').find('li').removeAttr('style');
+            $('div').find('ul').removeAttr('style');
+         }
+
+         function selected(param) {
+            var div = $(param);
+            div.css('background-color', 'lightblue');
+            div.find('li').css('textDecoration', 'underline');
+            div.find('ul').css('listStyle', 'none');
+         }
+      });
+   </script>
+   <div>
+      <h3>제목태그</h3>
+      <ul>
+         <li>리스트태그</li>
+         <li>리스트태그</li>
+      </ul>
+   </div>
+   <div>
+      <h3>제목태그</h3>
+      <ul>
+         <li>리스트태그</li>
+         <li>리스트태그</li>
+      </ul>
+   </div>
+   <div>
+      <h3>제목태그</h3>
+      <ul>
+         <li>리스트태그</li>
+         <li>리스트태그</li>
+      </ul>
+   </div>
+
+   <!-- 예제3 -->
+   <script>
+      $(document).ready(function () {
+
+         $('h1').click(function(){
+            let text = prompt('text값을 입력해주세요.');
+            $(this).text(text);
+         })
+
+         $('button[class=english]').click(function(){
+            // $('h1').filter(function(){
+            //    $(this).text($(this).attr('class'));
+            // })
+            let text01 = prompt('text01값을 입력해주세요.');
+            let text02 = prompt('text02값을 입력해주세요.');
+            $('.text01').text(text01);
+            $('.text02').text(text02);
+         })
+         $('button[class=reroll]').click(function(){
+            $('.text01').text('텍스트 01');
+            $('.text02').text('텍스트 02');
+         })
+      });
+   </script>
+   <h1 class="text01">텍스트 01</h1>
+   <h1 class="text02">텍스트 02</h1>
+   <!-- <h1 class="text03">텍스트 03</h1>
+   <h1 class="text04">텍스트 04</h1>
+   <h1 class="text05">텍스트 05</h1> -->
+   <button class="english">영어로 변경</button>
+   <button class="reroll">초기화</button>
+
+   <!-- 예제4 -->
+
+
+   <!-- 예제5 -->
+
+
+   <!-- 예제6 -->
+
+
+   <!-- 예제7 -->
+
+
+   <!-- 예제8 -->
+</body>
+
+</html>

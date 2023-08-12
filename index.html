@@ -2,62 +2,42 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-  <title>Document</title>
-  <style>
-    .empty-field {
-      border: 2px solid red;
-    }
-  </style>
-  <script>
-    $(document).ready(function () {
-      $('#signUp').click(function(event){
-        $('input')
-        .filter(function (index){
-          return $(this).val() === '';
-        })
-        .attr('class', 'empty-field');
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+   <title>Document</title>
+   <script>
+      $(document).ready(function () {
+
+         $('h1').click(function(){
+            let text = prompt('text값을 입력해주세요.');
+            $(this).text(text);
+         })
+
+         $('button[class=english]').click(function(){
+            // $('h1').filter(function(){
+            //    $(this).text($(this).attr('class'));
+            // })
+            let text01 = prompt('text01값을 입력해주세요.');
+            let text02 = prompt('text02값을 입력해주세요.');
+            $('.text01').text(text01);
+            $('.text02').text(text02);
+         })
+         $('button[class=reroll]').click(function(){
+            $('.text01').text('텍스트 01');
+            $('.text02').text('텍스트 02');
+         })
       });
-
-      $('#signUp').click(function(event){
-        $('input')
-        .filter(function (index){
-          return $(this).val() !== '';
-        })
-        .removeAttr('class');
-      });
-
-      $('#signUp').click(function(event){
-        $('input')
-        .filter(function (index){
-          return ($(this).val() === '') ? $(this).attr('class', 'empty-field') : $(this).removeAttr('class');
-        });
-      });
-    })
-  </script>
-</head>
-
-<body>
-  <form id="sampleForm">
-    <label>Username:</label>
-    <input type="text" name="username"><br><br>
-
-    <label>Email:</label>
-    <input type="email" name="email"><br><br>
-
-    <label>Password:</label>
-    <input type="text" name="color"><br><br>
-
-    <label>Favorite Color:</label>
-    <input type="text" name="color"><br><br>
-
-    <button type="button" id="signUp">signUp</button>
-  </form>
-
+   </script>
+   <h1 class="text01">텍스트 01</h1>
+   <h1 class="text02">텍스트 02</h1>
+   <!-- <h1 class="text03">텍스트 03</h1>
+   <h1 class="text04">텍스트 04</h1>
+   <h1 class="text05">텍스트 05</h1> -->
+   <button class="english">영어로 변경</button>
+   <button class="reroll">초기화</button>
 </body>
 
 </html>
