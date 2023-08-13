@@ -8,17 +8,76 @@
 </head>
 <body>
   <!-- 예제1 -->
+  <script>
+   $(document).ready(function () {
+      setTimeout(() => {
+         $('#check01').attr('checked', 'checked');
+         $('#check02').prop('checked', true);
+      }, 3000);
+   });
+   </script>
 
+   <label for="check01">attr 체크</label>
+   <input type="checkbox" id="check01">
+   <label for="check01">prop 체크</label>
+   <input type="checkbox" id="check02">
 
   <!-- 예제2 -->
+  <style>
+      .fishbowl {
+         width: 100vh;
+         height: 100vh;
+         border: 30px solid black;
+         box-sizing: border-box;
+         border-radius: 200px;
+         background-color: azure;
+      }
 
+      .fishbowl img {
+         display: block;
+      }
+  </style>
+  <script>
+   $(document).ready(function () {
+      let newFish = $('<img>');
+      newFish.attr('src', '/img/fish02.png');
+
+      $('.btn01').on('click', function(){
+         $('.fishbowl').append(newFish);
+      })
+
+      $('.btn02').on('click', function(){
+         $('.fishbowl').prepend(newFish);
+      })
+
+      $('.btn03').on('click', function(){
+         $('.fishbowl').after(newFish);
+      })
+
+      $('.btn04').on('click', function(){
+         $('.fishbowl').before(newFish);
+      })
+   });
+
+
+  </script>
+
+   <div class="fishbowl">
+      <img src="/img/fish01.png" alt="">
+   </div>
+   <button class="btn01">append()</button>
+   <button class="btn02">prepend()</button>
+   <button class="btn03">after()</button>
+   <button class="btn04">before()</button>
 
   <!-- 예제3 -->
 
 
   <!-- 예제4 -->
 
-  
+
   <!-- 예제5 -->
+
+
 </body>
 </html>

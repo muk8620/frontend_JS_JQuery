@@ -8,36 +8,16 @@
    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
       integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
    <title>Document</title>
+   <style>
+      .active {
+         background-color: black;
+         color: yellow;
+      }
+   </style>
    <script>
       $(document).ready(function () {
-         
-         $('button[class=english]').click(function () {
-            $('h3').filter(function () {
-               if (!$(this).data('preName')) {
-                  $(this).data('preName', $(this).text());
-               }
-               $(this).text($(this).attr('class'));
-            })
-         })
-         $('button[class=reroll]').click(function () {
-            $('h3').filter(function () {
-               $(this).text($(this).data('preName'));
-            })
-         })
-
-         // 2. 눌러서 입력값 변경
-
-         $('h3').click(function () {
-            let text = prompt('text값을 입력해주세요.').trim();
-
-            if (!text) {
-               return;
-            }
-
-            if (!$(this).data('preName')) {
-               $(this).data('preName', $(this).text());
-            }
-            $(this).text(text);
+         $('h1').click(function(){
+            $(this).toggleClass('active');
          })
       });
    </script>
@@ -45,18 +25,9 @@
 </head>
 
 <body>
-   <h3 class="text01">텍스트 01</h3>
-   <h3 class="text02">텍스트 02</h3>
-   <h3 class="text03">텍스트 03</h3>
-   <h3 class="text04">텍스트 04</h3>
-   <h3 class="text05">텍스트 05</h3>
-   <h3 class="text06">텍스트 06</h3>
-   <h3 class="text07">텍스트 07</h3>
-   <h3 class="text08">텍스트 08</h3>
-   <h3 class="text09">텍스트 09</h3>
-   <h3 class="text10">텍스트 10</h3>
-   <button class="english">영어로 변경</button>
-   <button class="reroll">초기화</button>
+   <h1>제목태그</h1>
+   <h1>제목태그</h1>
+   <h1>제목태그</h1>
 </body>
 
 </html>
